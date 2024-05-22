@@ -47,3 +47,9 @@ def lp(message):
         markup2.row(latte_del, latte_del_one, latte_add)
         bot.reply_to(message, s1, reply_markup=markup1)
         bot.reply_to(message, s2, reply_markup=markup2)
+    elif message.text == 'Оплата':
+        isOtiv = False
+        markup = types.InlineKeyboardMarkup()
+        op = types.InlineKeyboardButton('Оплатил', callback_data='pay')
+        markup.row(op)
+        bot.reply_to(message, 'Переведите по номеру 89289851280', reply_markup=markup)
