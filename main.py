@@ -107,3 +107,12 @@ def callback_message_menu(callback):
         markup.row(cappuccino, latte)
         bot.edit_message_text('Меню', callback.message.chat.id, callback.message.id, reply_markup = markup)
         # bot.delete_message(chat_id=callback.message.chat.id, message_id=callback.message.id+1)
+    elif callback.data == 'cappuccino_del':
+        cap = 0
+        markup2 = types.InlineKeyboardMarkup()
+        s2 = "Капучино: " + str(cap)
+        cappuccino_add = types.InlineKeyboardButton('Добавить', callback_data='cappuccino_add')
+        cappuccino_del = types.InlineKeyboardButton('Удалить все', callback_data='cappuccino_del')
+        cappuccino_del_one = types.InlineKeyboardButton('Удалить', callback_data='cappuccino_del_one')
+        markup2.row(cappuccino_del, cappuccino_del_one, cappuccino_add)
+        bot.edit_message_text(s2, callback.message.chat.id, callback.message.id, reply_markup = markup2)
