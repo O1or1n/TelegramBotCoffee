@@ -94,3 +94,9 @@ def callback_message_menu(callback):
         add = types.InlineKeyboardButton('Назад', callback_data='back')
         markup.row(add)
         bot.edit_message_text('Добавлено', callback.message.chat.id, callback.message.id, reply_markup = markup)
+    elif callback.data == 'add_latte':
+        lat = lat + 1
+        markup = types.InlineKeyboardMarkup()
+        add = types.InlineKeyboardButton('Назад', callback_data='back')
+        markup.row(add)
+        bot.edit_message_text('Добавлено', callback.message.chat.id, callback.message.id, reply_markup = markup)
