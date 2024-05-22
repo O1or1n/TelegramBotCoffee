@@ -153,3 +153,23 @@ def callback_message_menu(callback):
         cappuccino_del_one = types.InlineKeyboardButton('Удалить', callback_data='cappuccino_del_one')
         markup2.row(cappuccino_del, cappuccino_del_one, cappuccino_add)
         bot.edit_message_text(s2, callback.message.chat.id, callback.message.id, reply_markup = markup2)
+    elif callback.data == 'cappuccino_add':
+        cap = cap + 1
+        markup2 = types.InlineKeyboardMarkup()
+        s2 = "Капучино: " + str(cap)
+        cappuccino_add = types.InlineKeyboardButton('Добавить', callback_data='cappuccino_add')
+        cappuccino_del = types.InlineKeyboardButton('Удалить все', callback_data='cappuccino_del')
+        cappuccino_del_one = types.InlineKeyboardButton('Удалить', callback_data='cappuccino_del_one')
+        markup2.row(cappuccino_del, cappuccino_del_one, cappuccino_add)
+        bot.edit_message_text(s2, callback.message.chat.id, callback.message.id, reply_markup = markup2)
+    elif callback.data == 'latte_add':
+        lat = lat + 1
+        markup2 = types.InlineKeyboardMarkup()
+        s2 = "Латте: " + str(lat)
+        latte_del = types.InlineKeyboardButton('Удалить все', callback_data='latte_del')
+        latte_add = types.InlineKeyboardButton('Добавить', callback_data='latte_add')
+        latte_del_one = types.InlineKeyboardButton('Удалить', callback_data='latte_del_one')
+        markup2.row(latte_del, latte_del_one, latte_add)
+        bot.edit_message_text(s2, callback.message.chat.id, callback.message.id, reply_markup = markup2)
+
+bot.polling(none_stop=True)
