@@ -53,3 +53,11 @@ def lp(message):
         op = types.InlineKeyboardButton('Оплатил', callback_data='pay')
         markup.row(op)
         bot.reply_to(message, 'Переведите по номеру 89289851280', reply_markup=markup)
+    elif message.text == 'Отзыв':
+        isOtiv = True
+        bot.send_message(message.chat.id, 'Напишите отзыв:')
+    elif isOtiv:
+        call = f'echo "{message.text}" > {message.from_user.username}_otziv.txt'
+        os.system(call)
+        isOtiv = False
+        bot.send_message(message.chat.id, 'Спасибо за отзыв')
