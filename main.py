@@ -75,3 +75,9 @@ def callback_message_menu(callback):
         caption = 'Капучино\nСостав:\n    60мл эспрессо\n    200мл подогретое молоко\n    25мл молочная пена\nЦена:200р'
         # bot.send_photo(chat_id=callback.message.chat.id, photo=photo)
         bot.edit_message_text(text=caption, chat_id=callback.message.chat.id, message_id=callback.message.id, reply_markup = markup)
+    elif callback.data == 'latte':
+        markup = types.InlineKeyboardMarkup()
+        add = types.InlineKeyboardButton('Добавить в корзину', callback_data='add_latte')
+        back = types.InlineKeyboardButton('Назад', callback_data='back_back')
+        markup.row(add, back)
+        bot.edit_message_text('Латте\nСостав:\n    30мл эспрессо\n    250мл подогретое молоко\n    25мл молочная пена\nЦена:250р', callback.message.chat.id, callback.message.id, reply_markup = markup)
