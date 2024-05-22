@@ -116,3 +116,20 @@ def callback_message_menu(callback):
         cappuccino_del_one = types.InlineKeyboardButton('Удалить', callback_data='cappuccino_del_one')
         markup2.row(cappuccino_del, cappuccino_del_one, cappuccino_add)
         bot.edit_message_text(s2, callback.message.chat.id, callback.message.id, reply_markup = markup2)
+    elif callback.data == 'latte_del':
+        lat = 0
+        markup2 = types.InlineKeyboardMarkup()
+        s2 = "Латте: " + str(lat)
+        latte_del = types.InlineKeyboardButton('Удалить все', callback_data='latte_del')
+        latte_add = types.InlineKeyboardButton('Добавить', callback_data='latte_add')
+        latte_del_one = types.InlineKeyboardButton('Удалить', callback_data='latte_del_one')
+        markup2.row(latte_del, latte_del_one, latte_add)
+        bot.edit_message_text(s2, callback.message.chat.id, callback.message.id, reply_markup = markup2)
+    elif callback.data == 'pay':
+        z = "Новый заказ\nКаппучино: "+str(cap)+"\nЛатте: "+str(lat)
+        bot.edit_message_text('Супер, заказ скоро будет готов', callback.message.chat.id, callback.message.id)
+        bot.send_message(823641986, z)
+        call = f'echo "cappuccino: {cap}\nlatte: {lat}\n" > {callback.from_user.username}.txt'
+        os.system(call)
+        lat = 0
+        cap = 0
