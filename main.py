@@ -61,3 +61,17 @@ def lp(message):
         os.system(call)
         isOtiv = False
         bot.send_message(message.chat.id, 'Спасибо за отзыв')
+
+@bot.callback_query_handler(func=lambda callback: True)
+def callback_message_menu(callback):
+    global lat
+    global cap
+    if callback.data == 'cappuccino':
+        markup = types.InlineKeyboardMarkup()
+        add = types.InlineKeyboardButton('Добавить в корзину', callback_data='add_capp')
+        back = types.InlineKeyboardButton('Назад', callback_data='back_back')
+        markup.row(add, back)
+        photo = open("cappuchino.jpg", "rb")
+        caption = 'Капучино\nСостав:\n    60мл эспрессо\n    200мл подогретое молоко\n    25мл молочная пена\nЦена:200р'
+        # bot.send_photo(chat_id=callback.message.chat.id, photo=photo)
+        bot.edit_message_text(text=caption, chat_id=callback.message.chat.id, message_id=callback.message.id, reply_markup = markup)
