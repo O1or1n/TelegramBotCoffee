@@ -81,3 +81,10 @@ def callback_message_menu(callback):
         back = types.InlineKeyboardButton('Назад', callback_data='back_back')
         markup.row(add, back)
         bot.edit_message_text('Латте\nСостав:\n    30мл эспрессо\n    250мл подогретое молоко\n    25мл молочная пена\nЦена:250р', callback.message.chat.id, callback.message.id, reply_markup = markup)
+    elif callback.data == 'back_back':
+        markup = types.InlineKeyboardMarkup()
+        cappuccino = types.InlineKeyboardButton('Капучино', callback_data='cappuccino')
+        latte = types.InlineKeyboardButton('Латте', callback_data='latte')
+        markup.row(cappuccino, latte)
+        bot.edit_message_text('Меню', callback.message.chat.id, callback.message.id, reply_markup = markup)
+        # bot.delete_message(chat_id=callback.message.chat.id, message_id=callback.message.id+1)
