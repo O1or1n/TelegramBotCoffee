@@ -15,3 +15,8 @@ def answer_on_command(message):
     button_payment = types.KeyboardButton('Оплата')
     button_basket = types.KeyboardButton('Корзина')
     button_review = types.KeyboardButton('Отзыв')
+    markup.row(button_menu)
+    markup.row(button_payment)
+    markup.row(button_basket)
+    markup.row(button_review)
+    bot.send_message(message.chat.id, f'Привет {message.from_user.username}', reply_markup=markup)
